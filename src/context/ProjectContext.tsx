@@ -10,7 +10,7 @@ interface ProjectContextType {
   canUndo: boolean;
   canRedo: boolean;
   setCurrentProject: (project: Project | null) => void;
-  createNewProject: (title: string, type?: ProjectType, aspectRatio?: '16:9' | '9:16' | '1:1') => Project;
+  createNewProject: (title: string, type?: ProjectType, aspectRatio?: '16:9' | '9:16' | '1:1' | '4:3') => Project;
   loadProject: (projectId: string) => void;
   addClip: (clip: MediaClip) => void;
   updateClip: (clipId: string, updates: Partial<MediaClip>) => void;
@@ -73,7 +73,7 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const createNewProject = (
     title: string,
     type: ProjectType = 'video_edit',
-    aspectRatio: '16:9' | '9:16' | '1:1' = '16:9'
+    aspectRatio: '16:9' | '9:16' | '1:1' | '4:3' = '16:9'
   ): Project => {
     const newProj: Project = {
       id: `proj_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
